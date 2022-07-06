@@ -1,7 +1,9 @@
 package newProject.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import java.util.List;
 
 @Entity
 public class Costumer extends User {
@@ -11,6 +13,9 @@ public class Costumer extends User {
 
     @OneToOne(mappedBy = "costumer")
     private Cart cart;
+
+    @OneToMany(mappedBy = "costumer")
+    private List<Order> order;
 
     public Costumer() {
     }
