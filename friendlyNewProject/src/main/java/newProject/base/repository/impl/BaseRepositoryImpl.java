@@ -8,25 +8,22 @@ import javax.persistence.EntityManager;
 
 public abstract class BaseRepositoryImpl<T extends BaseEntity> implements BaseRepository<T> {
 
-    EntityManager em;
+    EntityManager em = HibernateUtil.getEmf().createEntityManager();
 
     public abstract Class<T> getEntityClass();
 
     @Override
     public void save(T t) {
-        em = HibernateUtil.getEmf().createEntityManager();
         em.persist(t);
     }
 
     @Override
     public void delete(T t) {
-        em = HibernateUtil.getEmf().createEntityManager();
         em.remove(t);
     }
 
     @Override
     public T update(T t) {
-        em = HibernateUtil.getEmf().createEntityManager();
         return em.merge(t);
     }
 
@@ -42,7 +39,10 @@ public abstract class BaseRepositoryImpl<T extends BaseEntity> implements BaseRe
 
     @Override
     public T findById(int id) {
-        em = HibernateUtil.getEmf().createEntityManager();
         return em.find(getEntityClass(), id);
+    }
+
+    public EntityManager getEm() {
+        return em;
     }
 }
