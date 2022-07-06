@@ -3,12 +3,16 @@ package newProject.domain;
 import newProject.base.BaseEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import java.time.ZonedDateTime;
 
 @Entity
 public class Order extends BaseEntity {
     private ZonedDateTime orderDate;
     private Status status;
+
+    @OneToOne(mappedBy = "order")
+    private Cart cart;
 
     public Order() {
     }

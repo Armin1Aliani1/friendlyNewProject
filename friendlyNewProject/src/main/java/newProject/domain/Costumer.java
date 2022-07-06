@@ -1,12 +1,16 @@
 package newProject.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Costumer extends User {
     private String address;
     private int age;
     private String phoneNumber;
+
+    @OneToOne(mappedBy = "costumer")
+    private Cart cart;
 
     public Costumer() {
     }
