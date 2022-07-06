@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 @Entity
-public abstract class Product extends BaseEntity {
+public class Product extends BaseEntity {
     private String name;
     private int unitPrice;
     private String brand;
