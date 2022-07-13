@@ -49,4 +49,23 @@ public class Menu {
         }
         return selection;
     }
+
+    public static void printEnterPassword(){
+        System.out.println("Enter password : ");
+    }
+
+    public static void printAdminMenu(){
+        System.out.println("1. Add product");
+        System.out.println("1. Delete product");
+    }
+
+    public static int selectAminMenu(){
+        int selection = 0;
+        while (selection < 1 || selection > 2){
+            selection = numberScaner();
+        }
+        return selection;
+    }
+
+
 }

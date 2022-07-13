@@ -6,7 +6,11 @@ import newProject.base.service.BaseService;
 
 public class BaseServiceImpl<T extends BaseEntity, R extends BaseRepositoryImpl<T>> implements BaseService<T> {
 
-    R repository;
+    protected R repository;
+
+    public BaseServiceImpl(R repository) {
+        this.repository = repository;
+    }
 
     @Override
     public void save(T t) {
